@@ -1,0 +1,215 @@
+/* ============================================================
+   RestauRant – Keyframe Animations
+   ============================================================ */
+
+/* --- Fade In --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Fade In Up --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* --- Fade In Left --- */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+/* --- Fade In Right --- */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* --- Slide In Right (sidebar/panel) --- */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0);    }
+}
+
+/* --- Bounce --- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0);   }
+  25%       { transform: translateY(-12px); }
+  50%       { transform: translateY(0);   }
+  75%       { transform: translateY(-6px); }
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% { transform: scale(1);    opacity: 1;   }
+  50%       { transform: scale(1.08); opacity: .85; }
+}
+
+/* --- Shake --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0);    }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px);  }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px);  }
+}
+
+/* --- Typing Cursor Blink --- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- Skeleton Shimmer --- */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- Toast Slide In (from right) --- */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* --- Toast Slide Out --- */
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(0);    }
+  to   { opacity: 0; transform: translateX(60px); }
+}
+
+/* --- Payment Success Checkmark --- */
+@keyframes checkDraw {
+  0%   { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0;   }
+}
+
+@keyframes circleGrow {
+  0%   { transform: scale(0);  opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* --- Spinner Rotation --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Parallax Float --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg);  }
+  33%       { transform: translateY(-18px) rotate(2deg);  }
+  66%       { transform: translateY(-8px)  rotate(-1deg); }
+}
+
+/* --- Zoom In --- */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(.7);  }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* --- Ripple (button click) --- */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: .6; }
+  100% { transform: scale(4); opacity: 0;  }
+}
+
+/* --- Scale Up (card hover helper) --- */
+@keyframes scaleUp {
+  from { transform: scale(1);    }
+  to   { transform: scale(1.04); }
+}
+
+/* ============================================================
+   Animation Utility Classes
+   ============================================================ */
+.anim-fadeIn      { animation: fadeIn      .5s ease both; }
+.anim-fadeInUp    { animation: fadeInUp    .7s ease both; }
+.anim-fadeInLeft  { animation: fadeInLeft  .7s ease both; }
+.anim-fadeInRight { animation: fadeInRight .7s ease both; }
+.anim-bounce      { animation: bounce      .9s ease both; }
+.anim-pulse       { animation: pulse       2s  ease-in-out infinite; }
+.anim-shake       { animation: shake       .5s ease both; }
+.anim-zoomIn      { animation: zoomIn      .5s ease both; }
+.anim-float       { animation: float       5s  ease-in-out infinite; }
+.anim-spin        { animation: spin        .7s linear infinite; }
+
+/* Delay helpers */
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+.delay-4 { animation-delay: .4s; }
+.delay-5 { animation-delay: .5s; }
+.delay-6 { animation-delay: .6s; }
+.delay-8 { animation-delay: .8s; }
+
+/* ============================================================
+   Payment Success Animation Component
+   ============================================================ */
+.payment-success-anim {
+  width: 100px; height: 100px; margin: 0 auto 1.5rem;
+  animation: circleGrow .5s ease both;
+}
+.payment-success-anim .circle-bg {
+  fill: none; stroke: #e8f5e9; stroke-width: 6;
+}
+.payment-success-anim .circle-fg {
+  fill: none; stroke: #28a745; stroke-width: 6;
+  stroke-dasharray: 283; stroke-dashoffset: 283;
+  stroke-linecap: round; transform-origin: center;
+  transform: rotate(-90deg);
+  animation: checkDraw .6s .3s ease forwards;
+}
+.payment-success-anim .check-mark {
+  fill: none; stroke: #28a745; stroke-width: 6;
+  stroke-dasharray: 60; stroke-dashoffset: 60;
+  stroke-linecap: round; stroke-linejoin: round;
+  animation: checkDraw .4s .7s ease forwards;
+}
+
+/* Payment Failure */
+.payment-fail-anim {
+  font-size: 5rem; color: var(--danger); margin: 0 auto 1.25rem;
+  display: block; animation: shake .5s .2s ease both, circleGrow .4s ease both;
+}
+
+/* ============================================================
+   Hover Transforms (applied via CSS classes)
+   ============================================================ */
+.hover-lift {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.15);
+}
+
+.hover-scale {
+  transition: transform .25s ease;
+}
+.hover-scale:hover { transform: scale(1.04); }
+
+/* ============================================================
+   Loading Bar (top of page)
+   ============================================================ */
+.loading-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--accent); z-index: 9999;
+  transition: width .3s ease;
+}
+
+/* ============================================================
+   Ripple Effect on Buttons
+   ============================================================ */
+.btn-ripple {
+  position: relative; overflow: hidden;
+}
+.btn-ripple .ripple-circle {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  width: 10px; height: 10px;
+  pointer-events: none;
+  animation: ripple .6s linear;
+}
